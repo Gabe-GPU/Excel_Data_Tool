@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Comparison Results</title>
+</head>
+<body>
+    <h1>Comparison Results</h1>
+    <table border="1">
+        <tr>
+            <th>Row</th>
+            <th>Field</th>
+            <th>File 1</th>
+            <th>File 2</th>
+        </tr>
+        {% for row, field, val1, val2 in mismatches %}
+        <tr>
+            <td>{{ row }}</td>
+            <td>{{ field }}</td>
+            <td>{{ val1 }}</td>
+            <td>{{ val2 }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+
