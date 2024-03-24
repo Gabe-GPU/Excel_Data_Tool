@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upload and Compare Excel Files</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+    <style>
+      .button-container {
+        margin-bottom: 10px; /* Adds space between buttons */
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Excel File Comparator</h1>
+    <form action="/output" method="post" enctype="multipart/form-data">
+      <div class="button-container">
+        <input
+          type="file"
+          name="file1"
+          id="file1"
+          required
+          aria-label="Select File 1"
+        />
+        <label for="file1">Choose File 1</label>
+      </div>
+
+      <div class="button-container">
+        <input
+          type="file"
+          name="file2"
+          id="file2"
+          required
+          aria-label="Select File 2"
+        />
+        <label for="file2">Choose File 2</label>
+      </div>
+
+      <div class="button-container">
+        <label for="sheet_name">Sheet Name:</label>
+        <input
+          type="text"
+          name="sheet_name"
+          id="sheet_name"
+          placeholder="Enter sheet name"
+          required
+        />
+      </div>
+
+      <div class="button-container">
+        <input type="submit" value="Compare Files" />
+      </div>
+
+      <div class="button-container">
+        <input type="reset" value="Reset Form" />
+      </div>
+
+      <div class="button-container">
+        <a href="/home" class="button">Go Back</a>
+      </div>
+    </form>
+  </body>
+</html>

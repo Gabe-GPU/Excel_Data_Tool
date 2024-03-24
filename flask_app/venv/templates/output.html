@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Comparison Results</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+  <body>
+    <h1>Comparison Results</h1>
+    {% if mismatches %}
+    <p>Mismatches found:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Sheet</th>
+          <th>Column Name</th>
+          <th>Column Letter</th>
+          <th>Row</th>
+          <th>Value in File 1</th>
+          <th>Value in File 2</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for mismatch in mismatches %}
+        <tr>
+          <td>{{ mismatch['Sheet'] }}</td>
+          <td>{{ mismatch['Column Name'] }}</td>
+          <td>{{ mismatch['Column Letter'] }}</td>
+          <td>{{ mismatch['Row'] }}</td>
+          <td>{{ mismatch['Value 1'] }}</td>
+          <td>{{ mismatch['Value 2'] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <p>No mismatches found.</p>
+    {% endif %}
+  </body>
+</html>
