@@ -31,8 +31,10 @@ class ExcelComparator:
         wb = load_workbook(filename=self.file1, read_only=True)
         ws = wb[self.sheet_name]
         # setting range of column letters in order to print them later
+       # Replace ws.max_column with a manual column count if needed
+        max_columns = ws.max_column if ws.max_column is not None else 100  # Example fallback
         column_letters = {
-            i+1: get_column_letter(i+1) for i in range(ws.max_column)}
+            i+1: get_column_letter(i+1) for i in range(max_columns)}
         wb.close()
 
         mismatches = []  # hold mismatches
