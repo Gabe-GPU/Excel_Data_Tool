@@ -1,3 +1,5 @@
+# Author @ Gabriele Malatesta
+
 import pandas as pd
 from openpyxl import load_workbook
 from openpyxl.utils import get_column_letter
@@ -34,6 +36,7 @@ class ExcelComparator:
         wb.close()
 
         mismatches = []  # hold mismatches
+
         for index, row_1 in data_1.iterrows():  # loop that iterates through rows
             if index >= len(data_2):
                 break
@@ -43,13 +46,14 @@ class ExcelComparator:
                 value_2 = row_2[col_name]
                 if pd.isna(value_1) and pd.isna(value_2):
                     continue
-                if value_1 != value_2:
+                if value_1 != value_2:  # creating not equals rule to append mismatches to a list
                     mismatches.append({
                         'Sheet': self.sheet_name,
                         # 'Column Name': col_name,
+                        # Reflects good column letter
                         'Column Letter': column_letters[col_index],
                         'Row': index + 4,  # Adjusted for header +1-based indexing
                         'Value 1': value_1,
                         'Value 2': value_2
                     })
-        return mismatches
+        return mismatches  # returens mismatches from the list
